@@ -269,6 +269,31 @@ module Mitty
         end
       end
 
+      describe 'normal_quality_value' do
+        subject { configuration.normal_quality_value }
+        let(:configured_value) { 'some normal_quality_value' }
+
+        context 'when normal_quality_value is configured in a config file' do
+          let(:config_from_file) { {'normal_quality_value' => configured_value} }
+
+          it 'is set to its value from the configuration file' do
+            expect(subject).to eq(configured_value)
+          end
+
+          it_behaves_like 'a configurable setting'
+        end
+
+        context 'when normal_quality_value is not configured in a config file' do
+          let(:config_from_file) { {} }
+
+          it 'defaults to 95' do
+            expect(subject).to eq(95)
+          end
+
+          it_behaves_like 'a configurable setting'
+        end
+      end
+
       describe 'low_quality_value' do
         subject { configuration.low_quality_value }
         let(:configured_value) { 'some low_quality_value' }

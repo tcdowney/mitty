@@ -8,7 +8,7 @@ module Mitty
 
     # Image Config
     attr_accessor :thumbnail_image_size, :small_image_size, :medium_image_size, 
-                  :large_image_size, :low_quality_value
+                  :large_image_size, :normal_quality_value, :low_quality_value
 
     # Miscellaneous Config
     attr_accessor :generate_low_quality
@@ -25,6 +25,7 @@ module Mitty
       @small_image_size = config_from_file['small_image_size'] || 250
       @medium_image_size = config_from_file['medium_image_size'] || 500
       @large_image_size = config_from_file['large_image_size'] || 1000
+      @normal_quality_value = config_from_file['normal_quality_value'] || 95
       @low_quality_value = config_from_file['low_quality_value'] || 50
 
       @generate_low_quality = config_from_file['generate_low_quality'] || false

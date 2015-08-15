@@ -4,6 +4,7 @@ RSpec.shared_context 'sample Mitty configuration' do
   let(:medium_image_size_config) { 300 }
   let(:large_image_size_config) { 400 }
   let(:generate_low_quality_config) { false }
+  let(:normal_quality_value_config) { 89 }
   let(:aws_access_key_id_config) { 'Access Key ID' }
   let(:aws_region_config) { 'some-aws-region' }
   let(:aws_secret_access_key_config) { 'Secret Access Key' }
@@ -18,6 +19,7 @@ RSpec.shared_context 'sample Mitty configuration' do
       medium_image_size: medium_image_size_config,
       large_image_size: large_image_size_config,
       generate_low_quality: generate_low_quality_config,
+      normal_quality_value: normal_quality_value_config,
       aws_access_key_id: aws_access_key_id_config,
       aws_region: aws_region_config,
       aws_secret_access_key: aws_secret_access_key_config,

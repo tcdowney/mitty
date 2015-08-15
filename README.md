@@ -71,6 +71,9 @@ small_image_size: 250
 medium_image_size: 500
 large_image_size: 1000
 
+# This value sets the quality level for normal resized versions of images
+normal_quality_value: 95
+
 # This value sets the quality level for low quality versions of images
 low_quality_value: 25
 
