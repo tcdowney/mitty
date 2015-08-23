@@ -7,7 +7,7 @@ module Mitty
     class_option :verbose, type: :boolean, aliases: '-v'
 
     desc 'mitty resize PATH', 'Resizes a directory of images to a given size'
-    option :output, required: true, desc: 'Path of the output directory', aliases: '-o'
+    option :output, desc: 'Path of the output directory', aliases: '-o'
     option :config, desc: 'Path to an optional config file', aliases: '-c'
     option :size, default: 'all', 
                   enum: ['all', 'thumbs'].concat(Darkroom::IMAGE_SIZES),
@@ -16,7 +16,7 @@ module Mitty
     def resize(path = '.')
       apply_custom_config
 
-      darkroom = Darkroom.new(path, options[:output])
+      darkroom = Darkroom.new(path, output_path(path))
 
       verbose_log("Resizing jpg images in #{path} to the following size: #{options[:size]}")
       case options[:size]
@@ -68,7 +68,7 @@ module Mitty
       apply_aws_credential_overrides
 
       verbose_log("Processing jpg images in #{path}")
-      darkroom = Darkroom.new(path, options[:output])
+      darkroom = Darkroom.new(path, output_path(path))
       darkroom.create_thumbnails
       resized_images_output_path = darkroom.create_all_sizes
       originals_output_path = darkroom.copy_originals
@@ -119,6 +119,10 @@ module Mitty
 
         Mitty.configuration.access_key_id = options[:access_key_id] if options[:access_key_id]
         Mitty.configuration.secret_access_key = options[:secret_access_key] if options[:secret_access_key]
+      end
+
+      def output_path(input_path)
+        options[:output].presence || input_path
       end
     end
 
