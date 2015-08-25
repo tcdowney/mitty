@@ -30,7 +30,14 @@ module Mitty
 
         image = Magick::Image.read(jpg_file).first
         image.resize_to_fill!(Mitty.configuration.thumbnail_image_size)
+
         image.write(image_output_path) { self.quality = Mitty.configuration.normal_quality_value }
+
+        if Mitty.configuration.generate_low_quality
+          lq_image_output_path = image_output_path(jpg_file, thumbnail_output_path, '_thumb_lq')
+          image.write(lq_image_output_path) { self.quality = Mitty.configuration.low_quality_value }
+        end
+
         image.destroy!
       end
 

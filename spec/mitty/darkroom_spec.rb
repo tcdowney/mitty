@@ -33,6 +33,7 @@ module Mitty
       let(:image) { double(Magick::Image) }
       let(:image_file_name) { 'file1.jpg' }
       let(:expected_image_output_path) { "#{output_directory}/file1_thumb.jpg"}
+      let(:expected_low_quality_image_output_path) { "#{output_directory}/file1_thumb_lq.jpg"}
       let(:test_image_files) { [image_file_name] }
 
       before do
@@ -71,6 +72,22 @@ module Mitty
 
       it 'returns the path to which the images were written' do
         expect(subject.create_thumbnails).to eq(output_directory)
+      end
+
+      context 'when the generate_low_quality configuration item is enabled' do
+        let(:generate_low_quality_config) { true }
+
+        it 'writes out low quality versions' do
+          expect(image).to have_received(:write).with(expected_low_quality_image_output_path)
+        end
+      end
+
+      context 'when the generate_low_quality configuration item is not enabled' do
+        let(:generate_low_quality_config) { false }
+
+        it 'does not write out low quality versions' do
+          expect(image).not_to have_received(:write).with(expected_low_quality_image_output_path)
+        end
       end
     end
 
