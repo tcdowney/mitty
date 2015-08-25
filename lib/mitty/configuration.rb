@@ -8,10 +8,8 @@ module Mitty
 
     # Image Config
     attr_accessor :thumbnail_image_size, :small_image_size, :medium_image_size, 
-                  :large_image_size, :normal_quality_value, :low_quality_value
-
-    # Miscellaneous Config
-    attr_accessor :generate_low_quality
+                  :large_image_size, :normal_quality_value, :low_quality_value,
+                  :generate_low_quality, :strip_color_profiles
 
     def initialize
       @aws_access_key_id = config_from_file['aws_access_key_id'] || ''
@@ -29,6 +27,7 @@ module Mitty
       @low_quality_value = config_from_file['low_quality_value'] || 50
 
       @generate_low_quality = config_from_file['generate_low_quality'] || false
+      @strip_color_profiles = config_from_file['strip_color_profiles'] || false
     end
 
     # Public: Reads config from the default configuration file locations.

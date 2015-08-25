@@ -30,6 +30,7 @@ module Mitty
 
         image = Magick::Image.read(jpg_file).first
         image.resize_to_fill!(Mitty.configuration.thumbnail_image_size)
+        image.strip! if Mitty.configuration.strip_color_profiles
 
         image.write(image_output_path) { self.quality = Mitty.configuration.normal_quality_value }
 
@@ -90,6 +91,8 @@ module Mitty
 
         image = Magick::Image.read(jpg_file).first
         image.resize_to_fit!(Mitty.configuration.send("#{size}_image_size"))
+        image.strip! if Mitty.configuration.strip_color_profiles
+        
         image.write(image_output_path) { self.quality = Mitty.configuration.normal_quality_value }
 
         if Mitty.configuration.generate_low_quality

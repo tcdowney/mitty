@@ -343,6 +343,31 @@ module Mitty
           it_behaves_like 'a configurable setting'
         end
       end
+
+      describe 'strip_color_profiles' do
+        subject { configuration.strip_color_profiles }
+        let(:configured_value) { 'some strip_color_profiles' }
+
+        context 'when strip_color_profiles is configured in a config file' do
+          let(:config_from_file) { {'strip_color_profiles' => configured_value} }
+
+          it 'is set to its value from the configuration file' do
+            expect(subject).to eq(configured_value)
+          end
+
+          it_behaves_like 'a configurable setting'
+        end
+
+        context 'when strip_color_profiles is not configured in a config file' do
+          let(:config_from_file) { {} }
+
+          it 'defaults to false' do
+            expect(subject).to be false
+          end
+
+          it_behaves_like 'a configurable setting'
+        end
+      end
     end
 
     describe '#config_from_file' do

@@ -80,7 +80,13 @@ low_quality_value: 25
 ## Miscellaneous Config
 
 # Controls whether or not low quality duplicates of images will be generated
+# Useful for loading lower quality images first and replacing with their higher
+# quality counterparts after the page has loaded
 generate_low_quality: true
+
+# Controls whether or not image color profiles and comments should be removed
+# Stripping out this metadata will result in lower filesizes
+strip_color_profiles: true
 ```
 
 ## Usage

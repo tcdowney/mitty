@@ -58,7 +58,7 @@ module Mitty
     end
 
     desc 'mitty manage PATH', 'Creates a variety of sizes, copies originals, and uploads to an AWS S3 Bucket'
-    option :output, required: true, desc: 'Path of the output directory', aliases: '-o'
+    option :output, desc: 'Path of the output directory', aliases: '-o'
     option :access_key_id, desc: 'AWS access key ID', aliases: '-a'
     option :secret_access_key, desc: 'AWS secret access key', aliases: '-s'
     option :aws_bucket, desc: 'AWS bucket identifier', aliases: '-b'

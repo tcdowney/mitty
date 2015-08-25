@@ -52,6 +52,7 @@ module Mitty
         allow(image).to receive_messages(
           resize_to_fill!: nil,
           write: nil,
+          strip!: nil,
           destroy!: nil
         )
 
@@ -74,7 +75,7 @@ module Mitty
         expect(subject.create_thumbnails).to eq(output_directory)
       end
 
-      context 'when the generate_low_quality configuration item is enabled' do
+      context 'when the generate_low_quality configuration is enabled' do
         let(:generate_low_quality_config) { true }
 
         it 'writes out low quality versions' do
@@ -82,11 +83,27 @@ module Mitty
         end
       end
 
-      context 'when the generate_low_quality configuration item is not enabled' do
+      context 'when the generate_low_quality configuration is not enabled' do
         let(:generate_low_quality_config) { false }
 
         it 'does not write out low quality versions' do
           expect(image).not_to have_received(:write).with(expected_low_quality_image_output_path)
+        end
+      end
+
+      context 'when the strip_color_profiles configuration is enabled' do
+        let(:strip_color_profiles_config) { true }
+
+        it 'writes out low quality versions' do
+          expect(image).to have_received(:strip!)
+        end
+      end
+
+      context 'when the strip_color_profiles configuration is not enabled' do
+        let(:strip_color_profiles_config) { false }
+
+        it 'does not write out low quality versions' do
+          expect(image).not_to have_received(:strip!)
         end
       end
     end
@@ -228,6 +245,7 @@ module Mitty
         allow(image).to receive_messages(
           resize_to_fit!: nil,
           write: nil,
+          strip!: nil,
           destroy!: nil
         )
       end
@@ -285,6 +303,30 @@ module Mitty
 
         it 'returns the path to which the images were written' do
           expect(subject.resize_images(Darkroom::SMALL)).to eq(output_directory)
+        end
+      end
+
+      context 'when the strip_color_profiles configuration is enabled' do
+        let(:strip_color_profiles_config) { true }
+
+        before do
+          subject.resize_images(Darkroom::SMALL)
+        end
+
+        it 'writes out low quality versions' do
+          expect(image).to have_received(:strip!)
+        end
+      end
+
+      context 'when the strip_color_profiles configuration is not enabled' do
+        let(:strip_color_profiles_config) { false }
+
+        before do
+          subject.resize_images(Darkroom::SMALL)
+        end
+
+        it 'does not write out low quality versions' do
+          expect(image).not_to have_received(:strip!)
         end
       end
     end
