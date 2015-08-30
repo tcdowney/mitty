@@ -371,7 +371,7 @@ module Mitty
     end
 
     describe '#config_from_file' do
-      subject { configuration.config_from_file }
+      subject { configuration.send(:config_from_file) }
 
       let(:current_directory_mitty_file) { './.mitty' }
       let(:home_directory_mitty_file) { "#{Dir.home}/.mitty" }

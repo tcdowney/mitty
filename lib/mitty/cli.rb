@@ -114,11 +114,11 @@ module Mitty
       end
 
       def apply_aws_credential_overrides
-        Mitty.configuration.access_key_id = ENV['AWS_ACCESS_KEY_ID'] if ENV['AWS_ACCESS_KEY_ID']
-        Mitty.configuration.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY'] if ENV['AWS_SECRET_ACCESS_KEY']
+        Mitty.configuration.aws_access_key_id = ENV['AWS_ACCESS_KEY_ID'] if ENV['AWS_ACCESS_KEY_ID']
+        Mitty.configuration.aws_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY'] if ENV['AWS_SECRET_ACCESS_KEY']
 
-        Mitty.configuration.access_key_id = options[:access_key_id] if options[:access_key_id]
-        Mitty.configuration.secret_access_key = options[:secret_access_key] if options[:secret_access_key]
+        Mitty.configuration.aws_access_key_id = options[:access_key_id] if options[:access_key_id]
+        Mitty.configuration.aws_secret_access_key = options[:secret_access_key] if options[:secret_access_key]
       end
 
       def output_path(input_path)

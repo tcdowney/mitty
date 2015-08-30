@@ -17,9 +17,9 @@ module Mitty
     describe '#initialize' do
       let(:expected_credentials) do
         {
-          region: mitty_configuration.aws_region,
-          access_key_id: mitty_configuration.aws_access_key_id,
-          secret_access_key: mitty_configuration.aws_secret_access_key
+          region: Mitty.configuration.aws_region,
+          access_key_id: Mitty.configuration.aws_access_key_id,
+          secret_access_key: Mitty.configuration.aws_secret_access_key
         }
       end
 
@@ -52,7 +52,7 @@ module Mitty
             .with(
               acl: custom_acl,
               body: image,
-              bucket: mitty_configuration.aws_s3_bucket,
+              bucket: Mitty.configuration.aws_s3_bucket,
               key: file_path
             )
         end
@@ -66,7 +66,7 @@ module Mitty
           expect(aws_client)
             .to have_received(:put_object)
             .with(
-              acl: mitty_configuration.aws_default_acl,
+              acl: Mitty.configuration.aws_default_acl,
               body: image,
               bucket: custom_bucket,
               key: file_path
@@ -83,9 +83,9 @@ module Mitty
           expect(aws_client)
             .to have_received(:put_object)
             .with(
-              acl: mitty_configuration.aws_default_acl,
+              acl: Mitty.configuration.aws_default_acl,
               body: image,
-              bucket: mitty_configuration.aws_s3_bucket,
+              bucket: Mitty.configuration.aws_s3_bucket,
               key: expected_key
             )
         end
@@ -98,9 +98,9 @@ module Mitty
           expect(aws_client)
             .to have_received(:put_object)
             .with(
-              acl: mitty_configuration.aws_default_acl,
+              acl: Mitty.configuration.aws_default_acl,
               body: image,
-              bucket: mitty_configuration.aws_s3_bucket,
+              bucket: Mitty.configuration.aws_s3_bucket,
               key: file_path
             )
         end
@@ -134,7 +134,7 @@ module Mitty
             .with(
               acl: custom_acl,
               body: image,
-              bucket: mitty_configuration.aws_s3_bucket,
+              bucket: Mitty.configuration.aws_s3_bucket,
               key: image_file_path
             )
         end
@@ -148,7 +148,7 @@ module Mitty
           expect(aws_client)
             .to have_received(:put_object)
             .with(
-              acl: mitty_configuration.aws_default_acl,
+              acl: Mitty.configuration.aws_default_acl,
               body: image,
               bucket: custom_bucket,
               key: image_file_path
@@ -165,9 +165,9 @@ module Mitty
           expect(aws_client)
             .to have_received(:put_object)
             .with(
-              acl: mitty_configuration.aws_default_acl,
+              acl: Mitty.configuration.aws_default_acl,
               body: image,
-              bucket: mitty_configuration.aws_s3_bucket,
+              bucket: Mitty.configuration.aws_s3_bucket,
               key: expected_key
             )
         end
@@ -180,9 +180,9 @@ module Mitty
           expect(aws_client)
             .to have_received(:put_object)
             .with(
-              acl: mitty_configuration.aws_default_acl,
+              acl: Mitty.configuration.aws_default_acl,
               body: image,
-              bucket: mitty_configuration.aws_s3_bucket,
+              bucket: Mitty.configuration.aws_s3_bucket,
               key: image_file_path
             )
         end

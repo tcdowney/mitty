@@ -11,23 +11,24 @@ RSpec.shared_context 'sample Mitty configuration' do
   let(:aws_secret_access_key_config) { 'Secret Access Key' }
   let(:aws_default_acl_config) { 'some acl config' }
   let(:aws_s3_bucket_config) { 'some bucket' }
+  let(:aws_original_copy_acl_config) { 'some-privacy-level' }
 
   let(:mitty_configuration) do
-    double(
-      Mitty::Configuration,
-      thumbnail_image_size: thumbnail_image_size_config,
-      small_image_size: small_image_size_config,
-      medium_image_size: medium_image_size_config,
-      large_image_size: large_image_size_config,
-      generate_low_quality: generate_low_quality_config,
-      strip_color_profiles: strip_color_profiles_config,
-      normal_quality_value: normal_quality_value_config,
-      aws_access_key_id: aws_access_key_id_config,
-      aws_region: aws_region_config,
-      aws_secret_access_key: aws_secret_access_key_config,
-      aws_default_acl: aws_default_acl_config,
-      aws_s3_bucket: aws_s3_bucket_config
-    )
+    Mitty::Configuration.new.tap { |config|
+      config.thumbnail_image_size = thumbnail_image_size_config
+      config.small_image_size = small_image_size_config
+      config.medium_image_size = medium_image_size_config
+      config.large_image_size = large_image_size_config
+      config.generate_low_quality = generate_low_quality_config
+      config.strip_color_profiles = strip_color_profiles_config
+      config.normal_quality_value = normal_quality_value_config
+      config.aws_access_key_id = aws_access_key_id_config
+      config.aws_region = aws_region_config
+      config.aws_secret_access_key = aws_secret_access_key_config
+      config.aws_default_acl = aws_default_acl_config
+      config.aws_s3_bucket = aws_s3_bucket_config
+      config.aws_original_copy_acl = aws_original_copy_acl_config 
+    }
   end
 
   before do

@@ -60,7 +60,7 @@ module Mitty
       end
 
       it 'resizes the images in the directory' do
-        expect(image).to have_received(:resize_to_fill!).with(mitty_configuration.thumbnail_image_size)
+        expect(image).to have_received(:resize_to_fill!).with(Mitty.configuration.thumbnail_image_size)
       end
 
       it 'writes the images to the appropriate path' do
@@ -258,7 +258,7 @@ module Mitty
         end
 
         it 'resizes the images in the directory' do
-          expect(image).to have_received(:resize_to_fit!).with(mitty_configuration.small_image_size)
+          expect(image).to have_received(:resize_to_fit!).with(Mitty.configuration.small_image_size)
         end
 
         it 'writes the images to the appropriate path' do
@@ -286,7 +286,7 @@ module Mitty
         end
 
         it 'resizes the images in the directory' do
-          expect(image).to have_received(:resize_to_fit!).with(mitty_configuration.small_image_size)
+          expect(image).to have_received(:resize_to_fit!).with(Mitty.configuration.small_image_size)
         end
 
         it 'writes the images to the appropriate path' do

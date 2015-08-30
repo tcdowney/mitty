@@ -30,7 +30,9 @@ module Mitty
       @strip_color_profiles = config_from_file['strip_color_profiles'] || false
     end
 
-    # Public: Reads config from the default configuration file locations.
+    private
+
+    # Internal: Reads config from the default configuration file locations.
     # First checks for a .mitty file in the current directory, then looks for one in
     # the user's home directory.  Defaults to {} if no configuration file available.
     #
