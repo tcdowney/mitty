@@ -27,7 +27,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install mitty --pre
+    $ gem install mitty
 
 ## Configuration
 The `mitty` gem can currently be configured with a `.mitty` file in your home directory, or a `.mitty` file in the directory in which you are executing the gem.  A configuration file can also be passed in to the CLI commands directly by providing the `-c` argument.
