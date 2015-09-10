@@ -1,4 +1,5 @@
 # Mitty
+[![Build Status](https://travis-ci.org/tcdowney/mitty.svg)](https://travis-ci.org/tcdowney/mitty)
 
 > Number 25 is my best ever, the quintessence of life, I think. I trust you'll get it where it needs to go, you always do. 
 
