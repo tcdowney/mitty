@@ -33,7 +33,7 @@ Or install it yourself as:
 ## Configuration
 The `mitty` gem can currently be configured with a `.mitty` file in your home directory, or a `.mitty` file in the directory in which you are executing the gem.  A configuration file can also be passed in to the CLI commands directly by providing the `-c` argument.
 
-Aditionally, especially sensitive configuration can be provided using environment variables.
+Additionally, sensitive configuration can be configured using the following environment variables.
 * `AWS_ACCESS_KEY_ID` - your AWS access key ID
 * `AWS_SECRET_ACCESS_KEY` - your AWS secret access key
 
