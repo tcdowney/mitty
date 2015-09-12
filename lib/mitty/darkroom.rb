@@ -25,7 +25,7 @@ module Mitty
     def create_thumbnails
       thumbnail_output_path = create_output_directory
 
-      Dir.glob("#{input_path}/*.jpg") do |jpg_file|
+      Dir.glob("#{input_path}/*.{jpg,jpeg}") do |jpg_file|
         image_output_path = image_output_path(jpg_file, thumbnail_output_path, '_thumb')
 
         image = Magick::Image.read(jpg_file).first
@@ -69,7 +69,7 @@ module Mitty
       copied_originals_output_path = "#{create_output_directory}/#{copied_originals_directory_name}"
       Dir.mkdir copied_originals_output_path unless File.exists?(copied_originals_output_path)
 
-      Dir.glob("#{input_path}/*.jpg") do |jpg_file|
+      Dir.glob("#{input_path}/*.{jpg,jpeg}") do |jpg_file|
         FileUtils.cp(jpg_file, copied_originals_output_path)
       end
 
@@ -86,7 +86,7 @@ module Mitty
     def resize_images(size)
       resized_images_output_path = create_output_directory
 
-      Dir.glob("#{input_path}/*.jpg") do |jpg_file|
+      Dir.glob("#{input_path}/*.{jpg,jpeg}") do |jpg_file|
         image_output_path = image_output_path(jpg_file, resized_images_output_path, "_#{size}")
 
         image = Magick::Image.read(jpg_file).first

@@ -6,7 +6,7 @@ module Mitty
   class CLI < Thor
     class_option :verbose, type: :boolean, aliases: '-v'
 
-    desc 'mitty resize PATH', 'Resizes a directory of images to a given size'
+    desc 'resize PATH', 'Resizes a directory of images to a given size'
     option :output, desc: 'Path of the output directory', aliases: '-o'
     option :config, desc: 'Path to an optional config file', aliases: '-c'
     option :size, default: 'all', 
@@ -30,7 +30,7 @@ module Mitty
       end
     end
 
-    desc 'mitty upload PATH', 'Uploads a directory of images to an Amazon Web Services S3 bucket'
+    desc 'upload PATH', 'Uploads a directory of images to an Amazon Web Services S3 bucket'
     option :access_key_id, desc: 'AWS access key ID', aliases: '-a'
     option :secret_access_key, desc: 'AWS secret access key', aliases: '-s'
     option :aws_bucket, desc: 'AWS bucket identifier', aliases: '-b'
@@ -57,7 +57,7 @@ module Mitty
       end
     end
 
-    desc 'mitty manage PATH', 'Creates a variety of sizes, copies originals, and uploads to an AWS S3 Bucket'
+    desc 'manage PATH', 'Creates a variety of sizes, copies originals, and uploads to an AWS S3 Bucket'
     option :output, desc: 'Path of the output directory', aliases: '-o'
     option :access_key_id, desc: 'AWS access key ID', aliases: '-a'
     option :secret_access_key, desc: 'AWS secret access key', aliases: '-s'

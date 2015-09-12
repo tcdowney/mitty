@@ -115,7 +115,7 @@ module Mitty
       before do
         allow(Dir)
           .to receive(:glob)
-          .with("#{image_directory_path}/*.jpg")
+          .with("#{image_directory_path}/*.{jpg,jpeg}")
           .and_return([image_file_path])
           .and_yield(image_file_path)
 

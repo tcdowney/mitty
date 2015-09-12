@@ -61,7 +61,7 @@ module Mitty
       bucket: Mitty.configuration.aws_s3_bucket,
       key_prefix: nil
     )
-      Dir.glob("#{path}/*.jpg") do |image_path|
+      Dir.glob("#{path}/*.{jpg,jpeg}") do |image_path|
         image = File.read(image_path)
         key = key_prefix ? "#{key_prefix}/#{File.basename(image_path)}" : image_path
 

@@ -40,7 +40,7 @@ module Mitty
         allow(subject).to receive(:create_output_directory).and_return(output_directory)
         allow(Dir)
           .to receive(:glob)
-          .with("#{subject.input_path}/*.jpg")
+          .with("#{subject.input_path}/*.{jpg,jpeg}")
           .and_return(test_image_files)
           .and_yield(image_file_name)
 
@@ -165,7 +165,7 @@ module Mitty
 
         allow(Dir)
           .to receive(:glob)
-          .with("#{subject.input_path}/*.jpg")
+          .with("#{subject.input_path}/*.{jpg,jpeg}")
           .and_return(test_image_files)
           .and_yield(image_file_name)
 
@@ -233,7 +233,7 @@ module Mitty
         allow(subject).to receive(:create_output_directory).and_return(output_directory)
         allow(Dir)
           .to receive(:glob)
-          .with("#{subject.input_path}/*.jpg")
+          .with("#{subject.input_path}/*.{jpg,jpeg}")
           .and_return(test_image_files)
           .and_yield(image_file_name)
 
